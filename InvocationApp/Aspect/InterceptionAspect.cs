@@ -1,15 +1,10 @@
 ﻿using Castle.DynamicProxy;
+using Core.Interceptors;
 
 namespace InvocationApp.Aspect
 {
     public class InterceptionAspect : IInterceptor
     {
-        public void Intercept(IInvocation invocation)
-        {
-            OnBefore(invocation);
-            invocation.Proceed();
-            OnAfter(invocation);
-        }
         private void OnBefore(IInvocation invocation)
         {
             Console.WriteLine("Before {0}", invocation.Method);
@@ -26,9 +21,16 @@ namespace InvocationApp.Aspect
             Console.WriteLine();
         }
 
-        private static void OnAfter(IInvocation invocation)
+        private void OnAfter(IInvocation invocation)
         {
             Console.WriteLine("After {0}", invocation.Method);
+        }
+
+        public void Intercept(IInvocation invocation)
+        {
+            OnBefore(invocation);
+            invocation.Proceed();
+            OnAfter(invocation);
         }
     }
 }

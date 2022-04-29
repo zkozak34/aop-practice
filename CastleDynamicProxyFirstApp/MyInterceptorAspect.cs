@@ -1,11 +1,15 @@
 ﻿using Castle.DynamicProxy;
+using Core.Interceptors;
 
-public class MyInterceptorAspect : IInterceptor
+public class MyInterceptorAspect : MethodInterceptor
 {
-    public void Intercept(IInvocation invocation)
+    public override void OnBefore(IInvocation invocation)
     {
-        Console.WriteLine("Before {0}", invocation.Method);
-        invocation.Proceed();
-        Console.WriteLine("After {0}", invocation.Method);
+        Console.WriteLine("On before {0}", invocation.Method);
+    }
+
+    public override void OnAfter(IInvocation invocation)
+    {
+        Console.WriteLine("On after {0}", invocation.Method);
     }
 }
