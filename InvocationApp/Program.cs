@@ -6,6 +6,14 @@ using InvocationApp.Aspect;
 
 var proxy = new ProxyGenerator();
 var aspect = proxy
-    .CreateClassProxy<Employee>(new InterceptionAspect());
-aspect.Add(1,"Zeynel","KOZAK");
+    .CreateClassProxy<Employee>(
+        new DefensiveProgrammingAspect());
+
+var emp1 = new Employee()
+{
+    Id = 1,
+    FirstName = "Zeynel"
+};
+
+aspect.Add(emp1.Id,emp1.FirstName,emp1.LastName);
 Console.ReadLine();

@@ -8,12 +8,13 @@
 
         public virtual void Add(int id, string firstName, string lastName)
         {
-            //Console.WriteLine("Method body start!");
-            //Console.WriteLine($"\t {"Id", -15} : {id}");
-            //Console.WriteLine($"\t {"FirstName", -15} : {firstName}");
-            //Console.WriteLine($"\t {"LastName", -15} : {lastName}");
-            //Console.WriteLine("Method body stop!");
+
             Console.WriteLine("Added.");
+        }
+
+        public virtual void Update(int id, string firstName, string lastName)
+        {
+            Console.WriteLine("Updated.");
         }
     }
 }
